@@ -1,0 +1,74 @@
+// Front-End/prisma/schema.prisma
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// --- ADMIN USER ---
+model Admin {
+  id       String @id @default(uuid())
+  email    String @unique
+  password String // Hashed password
+}
+
+// --- PORTFOLIO CONTENT ---
+model Project {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  category    String
+  tags        String[]
+  image       String
+  link        String?
+  github      String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Experience {
+  id          String   @id @default(uuid())
+  company     String
+  role        String
+  location    String
+  startDate   String
+  endDate     String
+  description String
+  highlights  String[]
+  createdAt   DateTime @default(now())
+}
+
+
+model Resume {
+  id        String   @id @default(uuid())
+  name      String
+  url       String
+  isActive  Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model Certification {
+  id        String   @id @default(uuid())
+  name      String   // e.g. "AWS Solutions Architect"
+  issuer    String   // e.g. "Amazon Web Services"
+  date      String   // e.g. "Dec 2025"
+  link      String?  // Credential URL
+  image     String?  // Issuer Logo URL
+  createdAt DateTime @default(now())
+}
+model BlogPost {
+  id        String   @id @default(uuid()) // <--- CHANGED THIS LINE
+  title     String
+  excerpt   String
+  content   String?  
+  category  String
+  image     String   
+  slug      String   @unique 
+  type      String   @default("article") 
+  createdAt DateTime @default(now())
+}
