@@ -7,7 +7,7 @@ import AboutMe from './about/page';
 import Footer from './footer/page';
 import ExperienceSection from '@/components/ui/experience';
 import CertificationList from '@/components/ui/certification-list';
-import BlogPage from './blog/page';
+
 
 // --- Database Connection ---
 import { PrismaClient } from '@prisma/client';

@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import { 
   LayoutDashboard, 
   Briefcase, 
-  FileText, 
+  
   Award, 
   Settings, 
   LogOut, 
@@ -22,7 +22,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     { name: 'Dashboard', href: '/admin', icon: LayoutDashboard },
     { name: 'Projects', href: '/admin/projects', icon: Briefcase },
     { name: 'Experience', href: '/admin/experience', icon: Award }, // Icons can be swapped
-    { name: 'Blogs', href: '/admin/blog', icon: FileText },
+    
     { name: 'Certifications', href: '/admin/certifications', icon: Award },
     { name: 'Settings', href: '/admin/settings', icon: Settings },
   ];
