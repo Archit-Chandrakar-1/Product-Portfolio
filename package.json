@@ -1,15 +1,15 @@
 {
-  "name": "nextjs",
+  "name": "product-portfolio",
   "version": "0.1.0",
+  "engines": {
+    "node": "24.x"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
-  },
-  "engines": {
-    "node": "18.x"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
