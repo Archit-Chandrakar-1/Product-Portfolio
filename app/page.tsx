@@ -7,6 +7,7 @@ import AboutMe from './about/page';
 import Footer from './footer/page';
 import ExperienceSection from '@/components/ui/experience';
 import CertificationList from '@/components/ui/certification-list';
+import BlogPage from './blog/page';
 
 // --- Database Connection ---
 import { PrismaClient } from '@prisma/client';
@@ -15,7 +16,7 @@ const prisma = new PrismaClient();
 
 // This must be an async function to fetch data
 export default async function Home() {
-  
+
   // 1. Fetch Experience Data
   const experiences = await prisma.experience.findMany({
     orderBy: { createdAt: 'desc' }
@@ -35,13 +36,13 @@ export default async function Home() {
   return (
     <main className="relative bg-[#050508] text-white">
       <Navbar />
-      
+
       {/* Hero Section */}
       <HeroSection resumeUrl={resumeUrl} />
 
       {/* About Section */}
       <section id="about">
-        <AboutMe/>
+        <AboutMe />
       </section>
 
       {/* Dynamic Experience Section */}
@@ -57,27 +58,27 @@ export default async function Home() {
 
       {/* Expertise Section */}
       <section id="expertise">
-        <ExpertiseSection/>
+        <ExpertiseSection />
       </section>
 
       {/* Dynamic Certifications Section */}
       <section id="certifications" className="py-24 bg-black/50">
         <div className="text-center mb-16 px-6">
-             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                Licenses & <span className="text-red-600">Certifications</span>
-            </h2>
-            <p className="text-neutral-400">Continuous learning and professional validation.</p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            Licenses & <span className="text-red-600">Certifications</span>
+          </h2>
+          <p className="text-neutral-400">Continuous learning and professional validation.</p>
         </div>
         {/* Pass the fetched data to the component */}
         <CertificationList data={certifications} />
       </section>
-      
+
       {/* Contact Section */}
       <section id="contact">
-        <ContactForm/>
+        <ContactForm />
       </section>
 
-      <Footer/>
+      <Footer />
     </main>
   );
 }
