@@ -44,6 +44,12 @@ export async function deleteProject(id: string) {
 // 2. EXPERIENCE ACTIONS
 // ==========================================
 
+export async function getExperiences() {
+  return prisma.experience.findMany({
+    orderBy: { createdAt: "desc" },
+  });
+}
+
 export async function createExperience(formData: FormData) {
   const company = formData.get("company") as string;
   const role = formData.get("role") as string;

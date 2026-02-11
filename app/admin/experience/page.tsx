@@ -1,15 +1,10 @@
 import React from 'react';
-import { PrismaClient } from '@prisma/client';
-import { deleteExperience } from '@/lib/action';
+import { deleteExperience, getExperiences } from '@/lib/action';
 import { Plus, Trash2, Briefcase } from 'lucide-react';
 import Link from 'next/link';
 
-const prisma = new PrismaClient();
-
 export default async function AdminExperience() {
-  const experiences = await prisma.experience.findMany({
-    orderBy: { createdAt: 'desc' },
-  });
+  const experiences = await getExperiences();
 
   return (
     <div className="space-y-8">
