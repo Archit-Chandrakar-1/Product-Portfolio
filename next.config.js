@@ -1,11 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    serverActions: true,
+    // Skip certain routes during build
+    skipTrailingSlashRedirect: true,
   },
-  images: {
-    domains: ['images.unsplash.com', 'res.cloudinary.com'], // Keeping your image domains
+  // or use this:
+  exportPathMap: async function (defaultPathMap) {
+    const pathMap = { ...defaultPathMap };
+    delete pathMap['/admin/blog'];
+    return pathMap;
   },
 }
 
-module.exports = nextConfig
+module.exports = nextConfig;
